@@ -107,11 +107,13 @@ def test_issue_13_matching():
     assert filter_any_tag(links, ["web"]) == [{"id": 1, "tags": ["python", "web"]}, {"id": 2, "tags": ["web"]}]
     assert filter_any_tag(links, ["python"]) == [{"id": 1, "tags": ["python", "web"]}]
     assert filter_any_tag(links, ["SE"]) == []
+
 def test_issue_13_empty_tag():
     links = [{"id": 1, "tags": ["python", "web"]}, {"id": 2, "tags": ["web"]}, {"id": 3, "tags": ["math", "test"]}]
     #The next two line tests that all links are returned if there are no tags inputted, and that otherwise it's false
     assert filter_any_tag(links, []) == links
     assert filter_any_tag(links, ["math", "test"]) != links
+
 def test_issue_13_case_insensitive():
     links = [{"id": 1, "tags": ["python", "web"]}, {"id": 4, "tags": ["Python"]}]
     #The next few lines test that the case sensitivity or whitespace doesn't interfere with matching a tag
